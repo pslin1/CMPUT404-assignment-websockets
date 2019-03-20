@@ -123,7 +123,13 @@ function getPosition(e) {
 
 function addEntity(entity, data) {
     world[entity] = data;
+    //https://github.com/abramhindle/WebSocketsExamples/blob/master/static/broadcast.html
+    //Credit: Abram Hindle (https://github.com/abramhindle)
+    //{'X0': {'x': 0, 'y': 0}}
+    socket.send( JSON.stringify( {entity, data}))
+    //console.log(data)
     drawNextFrame(); // (but should we?)
+    //Do the socket.send thing here
     //XXX: Send a XHTML Request that updates the entity you just modified!
 }
 var counter = 0;
@@ -254,6 +260,7 @@ function wsSetup() {
     socket = new WebSocket(url);
     socket.onopen = function() {
         //XXX: TODO What are you going to do here?
+        //??????????
     };
     socket.onerror = function(msg) {
         debug("WebSocket Error:" + msg.data);
@@ -261,7 +268,16 @@ function wsSetup() {
     socket.onmessage = function(msg) {  
         try {
             debug("WebSocket Recv:" + msg.data);
-            //XXX: TODO What are you going to do here?            
+            //https://github.com/abramhindle/WebSocketsExamples/blob/master/static/broadcast.html
+            //Credit: Abram Hindle (https://github.com/abramhindle)
+            var message = JSON.parse(msg.data);
+            //console.log(message);
+            //console.log(message['entity'])
+            //console.log(message['data'])
+            addEntity(message['entity'], message['data']);
+            //XXX: TODO What are you going to do here?
+            //Json.parse stuff
+            //then do socket.send as well?            
         } catch (e) {
             alert("socket on message: " + e);
         }

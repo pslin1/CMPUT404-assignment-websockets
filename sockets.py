@@ -190,6 +190,8 @@ def get_entity(entity):
     '''This is the GET version of the entity interface, return a representation of the entity'''
     # https://github.com/pslin1/CMPUT404-assignment-ajax/blob/master/server.py
     # Credit: pslin1 (https://github.com/pslin1)
+    #https://stackoverflow.com/questions/34057851/python-flask-typeerror-dict-object-is-not-callable/34057946
+    #Credit: davidism (https://stackoverflow.com/users/400617/davidism)
     return jsonify(myWorld.get(entity))
 
 
@@ -199,6 +201,8 @@ def clear():
     # https://github.com/pslin1/CMPUT404-assignment-ajax/blob/master/server.py
     # Credit: pslin1 (https://github.com/pslin1)
     myWorld.clear()
+    #https://stackoverflow.com/questions/34057851/python-flask-typeerror-dict-object-is-not-callable/34057946
+    #Credit: davidism (https://stackoverflow.com/users/400617/davidism)
     return jsonify(myWorld.world())
 
 
