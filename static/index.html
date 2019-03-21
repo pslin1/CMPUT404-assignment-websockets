@@ -44,6 +44,17 @@ debug("Test");
 
 world = {};
 
+//https://medium.com/@jagadeshanh/html5-canvas-click-and-draw-f665e02f5744
+//Credit: Jagadesh NH
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
 //XXX: TODO Make this prettier!
 function drawCircle(context,entity) {
     with(context) {
@@ -132,6 +143,14 @@ function addEntity(entity, data) {
     //Do the socket.send thing here
     //XXX: Send a XHTML Request that updates the entity you just modified!
 }
+
+//https://github.com/abramhindle/CMPUT404-assignment-websockets/blob/master/static/index.html
+//Credit: Abram Hindle (https://github.com/abramhindle)
+function addEntityWithoutRequest(entity, data) {
+    world[entity] = data;
+    drawNextFrame(); // (but should we?)
+}
+
 var counter = 0;
 function addEntityWithoutName(data) {
     var name = "X"+(counter++)%100;
@@ -237,15 +256,15 @@ mouse = (function() {
 // Add the application specific mouse listeners!
 //XXX: TODO Make these prettier!
 mouse.mousedowners.push(function(x,y,clicked,e) {
-    addEntityWithoutName({'x':x,'y':y,'colour':'blue'});
+    addEntityWithoutName({'x':x,'y':y,'colour':getRandomColor()});
 });
 
 mouse.mouseuppers.push(function(x,y,clicked,e) {
-    addEntityWithoutName({'x':x,'y':y,'colour':'red'});
+    addEntityWithoutName({'x':x,'y':y,'colour':getRandomColor()});
 });
 
 mouse.mousedraggers.push(function(x,y,clicked,e) {
-    addEntityWithoutName({'x':x,'y':y,'colour':'green',
+    addEntityWithoutName({'x':x,'y':y,'colour':getRandomColor(),
                           'radius':10});
 });
 
@@ -274,7 +293,9 @@ function wsSetup() {
             //console.log(message);
             //console.log(message['entity'])
             //console.log(message['data'])
-            addEntity(message['entity'], message['data']);
+            //addEntity(message['entity'], message['data']);
+            addEntityWithoutRequest(message['entity'], message['data']);
+            update();
             //XXX: TODO What are you going to do here?
             //Json.parse stuff
             //then do socket.send as well?            
