@@ -26,7 +26,7 @@ freetests.py is LICENSE'D under a BSD-like license:
 
 From ws4py
 
-Copyright (c) 2011-2014, Sylvain Hellegouarch, Abram Hindle
+Copyright (c) 2011-2014, Sylvain Hellegouarch, Abram Hindle, Shu-Jun Pierre Lin
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -59,3 +59,22 @@ Contributors
 * Mark Galloway
 * Abram Hindle
 * Cole Mackenzie
+* Shu-Jun Pierre Lin
+
+References
+============
+https://stackoverflow.com/questions/3757495/javascript-looping-through-a-json-string <br>
+https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_WebSocket_client_applications <br>
+http://www.gevent.org/api/gevent.html <br>
+https://stackoverflow.com/questions/3757495/javascript-looping-through-a-json-string <br>
+
+External Source Code used
+============
+https://github.com/abramhindle/WebSocketsExamples/blob/master/broadcaster.py <br>
+https://github.com/abramhindle/WebSocketsExamples/blob/master/static/broadcast.html <br>
+https://stackoverflow.com/questions/2733813/iterating-through-a-json-object <br>
+https://stackoverflow.com/questions/34057851/python-flask-typeerror-dict-object-is-not-callable/34057946 <br>
+https://github.com/pslin1/CMPUT404-assignment-ajax/blob/master/server.py <br>
+https://medium.com/@jagadeshanh/html5-canvas-click-and-draw-f665e02f5744 <br>
+https://github.com/abramhindle/CMPUT404-assignment-websockets/blob/master/static/index.html <br>
+
