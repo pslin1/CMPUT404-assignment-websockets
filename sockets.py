@@ -116,14 +116,12 @@ def read_ws(ws,client):
 
             if (msg is not None):
                 packet = json.loads(msg)
-                #print(type(packet))
                 #Note that packet is a dict
                 send_all_json(packet)
                 # https://stackoverflow.com/questions/2733813/iterating-through-a-json-object
                 # Credit: tzot (https://stackoverflow.com/users/6899/tzot)
                 for entity, data in packet.items():
                     myWorld.set(entity, data)
-                #TODO, update world
             else:
                 break
     except:
@@ -139,11 +137,11 @@ def subscribe_socket(ws):
     client = Client()
     clients.append(client)
     g = gevent.spawn( read_ws, ws, client)
-    print("Subscribing")
+    #print("Subscribing")
     try:
         while True:
             msg = client.get()
-            print("Got a message!")
+            #print("Got a message!")
             ws.send(msg)
     except Exception as e:
         print("WS Error %s" % e)
